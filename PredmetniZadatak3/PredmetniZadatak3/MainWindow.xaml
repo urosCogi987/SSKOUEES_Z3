@@ -5,11 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PredmetniZadatak3"
         mc:Ignorable="d"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
         Title="MainWindow" Height="450" Width="800">
     <DockPanel>
         <Grid DockPanel.Dock="Top" Height="50" Background="CornflowerBlue">
             <Button x:Name="LoadBtn" Margin="5,0,0,0" Content="Load XML" HorizontalAlignment="Left" Height="40" FontWeight="Bold" Width="100" Click="LoadBtn_Click"></Button>
+            <Button x:Name="DrawBtn" Margin="105,0,0,0" Content="Draw Scheme" HorizontalAlignment="Left" Height="40" FontWeight="Bold" Width="100" Click="DrawBtn_Click"/>
+            <TextBlock Name="fileSource"  Width="100" Background="White" HorizontalAlignment="Left" Height="40" Margin="210,0,0,0" FontSize="10" Padding="10" TextAlignment="Center" Text="{Binding Path=FilePath}"/>
         </Grid>
+        
         <Grid Background="Beige">
             <Viewport3D x:Name="myViewport" ClipToBounds="True" Height="700" Width="1000">
                 <Viewport3D.Camera>
