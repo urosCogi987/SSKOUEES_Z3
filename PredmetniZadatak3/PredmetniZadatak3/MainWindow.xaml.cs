@@ -24,5 +24,10 @@ namespace PredmetniZadatak3
         {
             InitializeComponent();
         }
+
+        private void LoadBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

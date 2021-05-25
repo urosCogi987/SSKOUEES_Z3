@@ -6,7 +6,78 @@
         xmlns:local="clr-namespace:PredmetniZadatak3"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <DockPanel>
+        <Grid DockPanel.Dock="Top" Height="50" Background="CornflowerBlue">
+            <Button x:Name="LoadBtn" Margin="5,0,0,0" Content="Load XML" HorizontalAlignment="Left" Height="40" FontWeight="Bold" Width="100" Click="LoadBtn_Click"></Button>
+        </Grid>
+        <Grid Background="Beige">
+            <Viewport3D x:Name="myViewport" ClipToBounds="True" Height="700" Width="1000">
+                <Viewport3D.Camera>
+                    <PerspectiveCamera x:Name="myCamera" Position="6.3 -8 8" LookDirection="0 8 -8" FieldOfView="80" UpDirection="0,1,0"/>
+                </Viewport3D.Camera>
+
+                <ModelVisual3D x:Name="myModel" >
+                    <ModelVisual3D.Transform>
+                        <Transform3DGroup>
+                            <!-- Scale transform -->
+                            <ScaleTransform3D x:Name="scaleTransform" ScaleX="1" ScaleY="1" ScaleZ="1"/>
+                            <!-- Rotation by Y -->
+                            <RotateTransform3D CenterX="5" CenterY="5" CenterZ="0">
+                                <RotateTransform3D.Rotation>
+                                    <AxisAngleRotation3D x:Name="rotateY" Axis="0,1,0"/>
+                                </RotateTransform3D.Rotation>
+                            </RotateTransform3D>
+                            <!-- Rotation by X -->
+                            <RotateTransform3D CenterX="5" CenterY="5" CenterZ="5">
+                                <RotateTransform3D.Rotation>
+                                    <AxisAngleRotation3D x:Name="rotateX" Axis="1,0,0"/>
+                                </RotateTransform3D.Rotation>
+                            </RotateTransform3D>
+                            <!-- Translate transform -->
+                            <TranslateTransform3D x:Name="translateTransform" OffsetX="0" OffsetY="0" OffsetZ="0"/>
+                        </Transform3DGroup>
+                    </ModelVisual3D.Transform>
+                    
+                    <ModelVisual3D.Content>
+                        <Model3DGroup x:Name="model3DGroup" >
+                            
+                            <AmbientLight Color="White"/>
+
+                            <GeometryModel3D x:Name="geometryModel" >
+                                <GeometryModel3D.Geometry>
+                                    <MeshGeometry3D x:Name="meshFront" Positions="0,0,0 10,0,0 10,10,0 0,10,0"
+                                                                       TriangleIndices="0,1,2 0,2,3"
+                                                                       TextureCoordinates="0,1 1,1 1,0 0,0">
+                                    </MeshGeometry3D>
+                                </GeometryModel3D.Geometry>
+                                <GeometryModel3D.Material >
+                                    <DiffuseMaterial>
+                                        <DiffuseMaterial.Brush>
+                                            <ImageBrush ImageSource="Images/map.jpg"></ImageBrush>
+                                        </DiffuseMaterial.Brush>
+                                    </DiffuseMaterial>
+                                </GeometryModel3D.Material>
+                            </GeometryModel3D>
+
+                            <GeometryModel3D>
+                                <GeometryModel3D.Geometry>
+                                    <MeshGeometry3D x:Name="meshBack" Positions="0,0,0 10,0,0 10,10,0 0,10,0"
+                                                                      TriangleIndices="1,0,3 3,2,1">
+                                    </MeshGeometry3D>
+                                </GeometryModel3D.Geometry>
+                                <GeometryModel3D.Material>
+                                    <DiffuseMaterial>
+                                        <DiffuseMaterial.Brush>
+                                            <SolidColorBrush Color="Thistle"/>
+                                        </DiffuseMaterial.Brush>
+                                    </DiffuseMaterial>
+                                </GeometryModel3D.Material>
+                            </GeometryModel3D>
+                            
+                        </Model3DGroup>
+                    </ModelVisual3D.Content>
+                </ModelVisual3D>
+            </Viewport3D>
+        </Grid>
+    </DockPanel>
 </Window>

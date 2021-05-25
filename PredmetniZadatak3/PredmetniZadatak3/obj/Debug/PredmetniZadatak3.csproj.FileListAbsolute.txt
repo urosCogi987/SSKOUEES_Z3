@@ -1,0 +1,15 @@
+C:\Users\Cogi\Desktop\faks\4. godina\Softver sa kriticnim odzivom\Zadatak3\PredmetniZadatak3\PredmetniZadatak3\bin\Debug\PredmetniZadatak3.exe.config
+C:\Users\Cogi\Desktop\faks\4. godina\Softver sa kriticnim odzivom\Zadatak3\PredmetniZadatak3\PredmetniZadatak3\bin\Debug\PredmetniZadatak3.exe
+C:\Users\Cogi\Desktop\faks\4. godina\Softver sa kriticnim odzivom\Zadatak3\PredmetniZadatak3\PredmetniZadatak3\bin\Debug\PredmetniZadatak3.pdb
+C:\Users\Cogi\Desktop\faks\4. godina\Softver sa kriticnim odzivom\Zadatak3\PredmetniZadatak3\PredmetniZadatak3\obj\Debug\PredmetniZadatak3.csprojAssemblyReference.cache
+C:\Users\Cogi\Desktop\faks\4. godina\Softver sa kriticnim odzivom\Zadatak3\PredmetniZadatak3\PredmetniZadatak3\obj\Debug\MainWindow.g.cs
+C:\Users\Cogi\Desktop\faks\4. godina\Softver sa kriticnim odzivom\Zadatak3\PredmetniZadatak3\PredmetniZadatak3\obj\Debug\App.g.cs
+C:\Users\Cogi\Desktop\faks\4. godina\Softver sa kriticnim odzivom\Zadatak3\PredmetniZadatak3\PredmetniZadatak3\obj\Debug\PredmetniZadatak3_MarkupCompile.cache
+C:\Users\Cogi\Desktop\faks\4. godina\Softver sa kriticnim odzivom\Zadatak3\PredmetniZadatak3\PredmetniZadatak3\obj\Debug\PredmetniZadatak3_MarkupCompile.lref
+C:\Users\Cogi\Desktop\faks\4. godina\Softver sa kriticnim odzivom\Zadatak3\PredmetniZadatak3\PredmetniZadatak3\obj\Debug\MainWindow.baml
+C:\Users\Cogi\Desktop\faks\4. godina\Softver sa kriticnim odzivom\Zadatak3\PredmetniZadatak3\PredmetniZadatak3\obj\Debug\PredmetniZadatak3.g.resources
+C:\Users\Cogi\Desktop\faks\4. godina\Softver sa kriticnim odzivom\Zadatak3\PredmetniZadatak3\PredmetniZadatak3\obj\Debug\PredmetniZadatak3.Properties.Resources.resources
+C:\Users\Cogi\Desktop\faks\4. godina\Softver sa kriticnim odzivom\Zadatak3\PredmetniZadatak3\PredmetniZadatak3\obj\Debug\PredmetniZadatak3.csproj.GenerateResource.cache
+C:\Users\Cogi\Desktop\faks\4. godina\Softver sa kriticnim odzivom\Zadatak3\PredmetniZadatak3\PredmetniZadatak3\obj\Debug\PredmetniZadatak3.csproj.CoreCompileInputs.cache
+C:\Users\Cogi\Desktop\faks\4. godina\Softver sa kriticnim odzivom\Zadatak3\PredmetniZadatak3\PredmetniZadatak3\obj\Debug\PredmetniZadatak3.exe
+C:\Users\Cogi\Desktop\faks\4. godina\Softver sa kriticnim odzivom\Zadatak3\PredmetniZadatak3\PredmetniZadatak3\obj\Debug\PredmetniZadatak3.pdb
