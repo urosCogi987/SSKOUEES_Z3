@@ -11,7 +11,7 @@ namespace PredmetniZadatak3.Controllers
 {
     public class XMLParser
     {
-        public static void LoadSubstations(HashSet<PowerEntity> entities, HashSet<SubstationEntity> substationEntities, string filename)
+        public static void LoadSubstations(HashSet<SubstationEntity> substationEntities, string filename)
         {
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.Load(filename);
@@ -24,15 +24,16 @@ namespace PredmetniZadatak3.Controllers
                 
                 subEntity.Id = long.Parse(node.SelectSingleNode("Id").InnerText);
                 subEntity.Name = node.SelectSingleNode("Name").InnerText;
-                subEntity.PointX = double.Parse(node.SelectSingleNode("X").InnerText);
-                subEntity.PointY = double.Parse(node.SelectSingleNode("Y").InnerText);
-
-                entities.Add(subEntity);
+                subEntity.X = double.Parse(node.SelectSingleNode("X").InnerText);
+                subEntity.Y = double.Parse(node.SelectSingleNode("Y").InnerText);
+                subEntity.TypeEntity = TypeEntity.Substation;
+                subEntity.ToolTip = "Substation:\nID: " + subEntity.Id + "\nName: " + subEntity.Name;
+                
                 substationEntities.Add(subEntity);
             }
         }
 
-        public static void LoadNodes(HashSet<PowerEntity> entities, HashSet<NodeEntity> nodeEntities, string filename)
+        public static void LoadNodes(HashSet<NodeEntity> nodeEntities, string filename)
         {
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.Load(filename);
@@ -44,16 +45,17 @@ namespace PredmetniZadatak3.Controllers
                 NodeEntity nodeEntity = new NodeEntity();
 
                 nodeEntity.Id = long.Parse(node.SelectSingleNode("Id").InnerText);
-                nodeEntity.Name = node.SelectSingleNode("Name").InnerText;
-                nodeEntity.PointX = double.Parse(node.SelectSingleNode("X").InnerText);
-                nodeEntity.PointY = double.Parse(node.SelectSingleNode("Y").InnerText);
-
-                entities.Add(nodeEntity);
+                nodeEntity.Name = node.SelectSingleNode("Name").InnerText;                
+                nodeEntity.X = double.Parse(node.SelectSingleNode("X").InnerText);
+                nodeEntity.Y = double.Parse(node.SelectSingleNode("Y").InnerText);                
+                nodeEntity.TypeEntity = TypeEntity.Node;
+                nodeEntity.ToolTip = "Node:\nID: " + nodeEntity.Id + "\nName: " + nodeEntity.Name;
+                
                 nodeEntities.Add(nodeEntity);
             }
         }
 
-        public static void LoadSwitches(HashSet<PowerEntity> entities, HashSet<SwitchEntity> switchEntities, string filename)
+        public static void LoadSwitches(HashSet<SwitchEntity> switchEntities, string filename)
         {
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.Load(filename);
@@ -67,10 +69,11 @@ namespace PredmetniZadatak3.Controllers
                 swEntity.Id = long.Parse(node.SelectSingleNode("Id").InnerText);
                 swEntity.Name = node.SelectSingleNode("Name").InnerText;
                 swEntity.Status = node.SelectSingleNode("Status").InnerText;
-                swEntity.PointX = double.Parse(node.SelectSingleNode("X").InnerText);
-                swEntity.PointY = double.Parse(node.SelectSingleNode("Y").InnerText);
-
-                entities.Add(swEntity);
+                swEntity.X = double.Parse(node.SelectSingleNode("X").InnerText);
+                swEntity.Y = double.Parse(node.SelectSingleNode("Y").InnerText);
+                swEntity.TypeEntity = TypeEntity.Switch;
+                swEntity.ToolTip = "Switch:\nID: " + swEntity.Id + "\nName: " + swEntity.Name + "\nStatus: " + swEntity.Status;
+                
                 switchEntities.Add(swEntity);
             }
         }
@@ -114,6 +117,7 @@ namespace PredmetniZadatak3.Controllers
                     lineEntity.Vertices.Add(new Point3D(x, y, 1));
                 }
 
+                lineEntity.ConvertedVertices = new List<Point3D>();
 
                 lineEntities.Add(lineEntity);
             }

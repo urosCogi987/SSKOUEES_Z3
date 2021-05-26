@@ -47,6 +47,8 @@ namespace PredmetniZadatak3
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+
+
         MainCamera mainCamera;
         HashSet<PowerEntity> powerEntities = new HashSet<PowerEntity>();
         HashSet<SubstationEntity> substationEntities = new HashSet<SubstationEntity>();        
@@ -70,14 +72,16 @@ namespace PredmetniZadatak3
             {
                 var onlyFileName = System.IO.Path.GetFileName(ofd.FileName);
                 FilePath = onlyFileName;
+                fileSource.Text = onlyFileName;
             }
 
-            XMLParser.LoadSubstations(powerEntities, substationEntities, FilePath);
-            XMLParser.LoadNodes(powerEntities, nodeEntities, FilePath);
-            XMLParser.LoadSwitches(powerEntities, switchEntities, FilePath);
+            XMLParser.LoadSubstations(substationEntities, FilePath);
+            XMLParser.LoadNodes(nodeEntities, FilePath);
+            XMLParser.LoadSwitches(switchEntities, FilePath);
             XMLParser.LoadLines(lineEntities, FilePath);
 
-            double localLatitude = 0;
+            Converter.ConvertCoordinates(lineEntities, substationEntities, nodeEntities, switchEntities, powerEntities);
+            Converter.RescaleElements(powerEntities, lineEntities);
         }
 
         private void DrawBtn_Click(object sender, RoutedEventArgs e)

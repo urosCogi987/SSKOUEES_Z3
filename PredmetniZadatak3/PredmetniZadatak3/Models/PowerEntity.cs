@@ -10,6 +10,8 @@ namespace PredmetniZadatak3.Models
     {
         private long id;
         private string  name;
+        private double x;
+        private double y;        
         private double pointX;
         private double pointY;
         private string toolTip;
@@ -26,7 +28,17 @@ namespace PredmetniZadatak3.Models
         {
             get { return name; }
             set { name = value; }
-        }        
+        }
+        public double X
+        {
+            get { return x; }
+            set { x = value; }
+        }
+        public double Y
+        {
+            get { return y; }
+            set { y = value; }
+        }
         public double PointX
         {
             get { return pointX; }

@@ -63,6 +63,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controllers\Converter.cs" />
     <Compile Include="Controllers\MainCamera.cs" />
     <Compile Include="Controllers\XMLParser.cs" />
     <Compile Include="MainWindow.xaml.cs">

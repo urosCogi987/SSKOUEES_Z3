@@ -21,10 +21,11 @@ namespace PredmetniZadatak3.Models
         private long secondEnd;
         private string tooltip;
         private List<Point3D> vertices;
+        private List<Point3D> convertedVertices;        
         private Brush color;
 
 
-
+        
         public long Id
         {
             get { return id; }
@@ -79,6 +80,11 @@ namespace PredmetniZadatak3.Models
         {
             get { return vertices; }
             set { vertices = value; }
+        }
+        public List<Point3D> ConvertedVertices
+        {
+            get { return convertedVertices; }
+            set { convertedVertices = value; }
         }
         public Brush Color
         {
