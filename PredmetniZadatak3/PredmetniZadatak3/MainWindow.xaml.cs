@@ -86,10 +86,7 @@ namespace PredmetniZadatak3
 
         private void DrawBtn_Click(object sender, RoutedEventArgs e)
         {
-            
-            
-
-            
+            Painter.DrawAllEntities(model3DGroup, powerEntities, lineEntities);             
         }
     }
 }
