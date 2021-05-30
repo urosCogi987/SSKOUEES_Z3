@@ -19,7 +19,7 @@ namespace PredmetniZadatak3.Models
 
         public NodeEntity()
         {
-            Color = Brushes.Blue;
+            Color = Brushes.LightBlue;
         }
     }
 }

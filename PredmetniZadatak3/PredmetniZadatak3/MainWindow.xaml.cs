@@ -50,6 +50,7 @@ namespace PredmetniZadatak3
 
 
         MainCamera mainCamera;
+        HitTest hitTest;
         HashSet<PowerEntity> powerEntities = new HashSet<PowerEntity>();
         HashSet<SubstationEntity> substationEntities = new HashSet<SubstationEntity>();        
         HashSet<NodeEntity> nodeEntities = new HashSet<NodeEntity>();
@@ -86,7 +87,8 @@ namespace PredmetniZadatak3
 
         private void DrawBtn_Click(object sender, RoutedEventArgs e)
         {
-            Painter.DrawAllEntities(model3DGroup, powerEntities, lineEntities);             
+            Painter.DrawAllEntities(model3DGroup, powerEntities, lineEntities);
+            hitTest = new HitTest(myViewport, model3DGroup, this);
         }
     }
 }

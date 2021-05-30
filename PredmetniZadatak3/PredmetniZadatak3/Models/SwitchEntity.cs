@@ -26,7 +26,7 @@ namespace PredmetniZadatak3.Models
 
         public SwitchEntity()
         {
-            Color = Brushes.Orange;
+            Color = Brushes.Red;
         }
     }
 }

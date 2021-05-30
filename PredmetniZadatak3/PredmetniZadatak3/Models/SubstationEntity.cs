@@ -19,7 +19,7 @@ namespace PredmetniZadatak3.Models
 
         public SubstationEntity()
         {
-            Color = Brushes.Green;
+            Color = Brushes.Pink;
         }
     }
 }

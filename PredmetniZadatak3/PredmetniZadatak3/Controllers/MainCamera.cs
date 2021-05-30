@@ -24,6 +24,10 @@ namespace PredmetniZadatak3.Controllers
         private int zoomMin = -10;
         private Point startPoint = new Point();
         private Point mOffset = new Point();
+
+        private bool isRotating = false;
+        private Quaternion rotDelta;
+        private Quaternion rotation;
         
 
         public MainCamera(Viewport3D viewport, ScaleTransform3D scaleTransform, AxisAngleRotation3D rotateX, AxisAngleRotation3D rotateY, TranslateTransform3D translateTransform, Window window)
@@ -33,18 +37,23 @@ namespace PredmetniZadatak3.Controllers
             this.rotateX = rotateX;
             this.rotateY = rotateY;
             this.translate = translateTransform;
-            this.window = window;            
+            this.window = window;
+
+            rotDelta = Quaternion.Identity;
+            this.rotation = new Quaternion(0,0,0,1);
+
+            InitManipulation();
             //this.rotationdelta = Quaternion.Identity;
             //this.rotation = new Quaternion(0, 0, 0, 1);            
         }
 
-        public void InitManipulation()
+        private void InitManipulation()
         {
             viewport.MouseWheel += MouseWheelEvent;
             viewport.MouseLeftButtonDown += MouseLeftButtonDownEvent;
             viewport.MouseLeftButtonUp += MouseLeftButtonUpEvent;            
-            viewport.MouseDown += MouseAnyDownEvent;
-            viewport.MouseUp += MouseAnyUpEvent;
+            viewport.MouseDown += MouseMiddleButtonDownEvent;
+            viewport.MouseUp += MouseMiddleButtonUpEvent;
             viewport.MouseMove += MouseMoveEvent;
         }
 
@@ -64,9 +73,7 @@ namespace PredmetniZadatak3.Controllers
                 scale.ScaleZ -= 0.1;
 
                 zoomCurrent--;
-            }
-
-            // WOOOOOOOOOOOOOOOOOT??
+            }            
 
             scale.CenterX = 5;
             scale.CenterY = 5;
@@ -87,24 +94,68 @@ namespace PredmetniZadatak3.Controllers
             viewport.ReleaseMouseCapture();
         }
 
-        private void MouseAnyDownEvent(object sender, MouseEventArgs e)
+        private void MouseMiddleButtonDownEvent(object sender, MouseEventArgs e)
         {
-            //if (e.MiddleButton == MouseButtonState.Pressed)
-            //{
-            //    viewport.CaptureMouse();
-            //    startPoint = e.GetPosition(viewport);
-            //}
+            if (e.MiddleButton == MouseButtonState.Pressed)
+            {
+                isRotating = true;
+                viewport.CaptureMouse();
+                startPoint = e.GetPosition(window);
+
+                mOffset.X = translate.OffsetX;
+                mOffset.Y = translate.OffsetY;
+            }
         }
 
-        private void MouseAnyUpEvent(object sender, MouseEventArgs e)
+        private void MouseMiddleButtonUpEvent(object sender, MouseEventArgs e)
         {
+            if (isRotating)
+            {
+                rotation = rotDelta * rotation;
+            }
 
+            if (e.MiddleButton == MouseButtonState.Released)
+            {
+                isRotating = false;
+                viewport.ReleaseMouseCapture();
+            }
         }
         
 
         private void MouseMoveEvent(object sender, MouseEventArgs e)
         {
+            if (viewport.IsMouseCaptured)
+            {
+                Point endPoint = e.GetPosition(window);
+                double offsetX = endPoint.X - startPoint.X;
+                double offsetY = endPoint.Y - startPoint.Y;
+                double w = window.Width;
+                double h = window.Height;
+                double translateX = (offsetX * 100) / w;
+                double translateY = -(offsetY * 100) / h;
+                
+                if (isRotating)
+                {
+                    var angleY = (rotateY.Angle + -translateX) % 360;
+                    var angleX = (rotateX.Angle + translateY) % 360;
+                    if (-75 < angleY && angleY < 75)
+                    {
+                        rotateY.Angle = angleY;
+                    }
+                    if (-20 < angleX && angleX < 125)
+                    {
+                        rotateX.Angle = angleX;
+                    }
 
+                    startPoint = endPoint;
+                }
+                else
+                {
+                    translate.OffsetX = mOffset.X + (translateX / (100 * scale.ScaleX));
+                    translate.OffsetY = mOffset.Y + (translateY / (100 * scale.ScaleX));
+                    translate.OffsetZ = translate.OffsetZ;
+                }
+            }
         }
     }
 }

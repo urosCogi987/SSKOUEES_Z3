@@ -64,6 +64,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controllers\Converter.cs" />
+    <Compile Include="Controllers\HitTest.cs" />
     <Compile Include="Controllers\MainCamera.cs" />
     <Compile Include="Controllers\Painter.cs" />
     <Compile Include="Controllers\XMLParser.cs" />

@@ -136,13 +136,20 @@ namespace PredmetniZadatak3.Controllers
             switch(powerEntity.TypeEntity)
             {
                 case TypeEntity.Substation:
-                    return Brushes.Green;
+                    return Brushes.Pink;
 
                 case TypeEntity.Node:
                     return Brushes.Blue;
 
                 case TypeEntity.Switch:
-                    return Brushes.Orange;
+                    if (((SwitchEntity)powerEntity).Status == "Closed")
+                    {
+                        return Brushes.Red;
+                    }
+                    else
+                    {
+                        return Brushes.Green;
+                    }
 
                 default:
                     return Brushes.White;
@@ -226,8 +233,6 @@ namespace PredmetniZadatak3.Controllers
             model.SetValue(FrameworkElement.TagProperty, lineEntity);
             
             return model;
-        }
-
-        
+        }        
     }
 }
