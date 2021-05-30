@@ -40,7 +40,7 @@ namespace PredmetniZadatak3.Controllers
 						continue;
 					}
 
-					line.ConvertedVertices.Add(new Point3D(lat, lon, 1));
+					line.ConvertedVertices.Add(new Point3D(lon, lat, 1));
 				}
 
 
