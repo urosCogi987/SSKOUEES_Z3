@@ -58,6 +58,7 @@ namespace PredmetniZadatak3.Controllers
 				substation.PointX = lon;
 				substation.PointY = lat;
 
+				substation.TypeEntity = TypeEntity.Substation;
 				powerEntities.Add(substation);
 			}            
 
@@ -73,6 +74,7 @@ namespace PredmetniZadatak3.Controllers
 				node.PointX = lon;
 				node.PointY = lat;
 
+				node.TypeEntity = TypeEntity.Node;
 				powerEntities.Add(node);
 			}
 
@@ -88,6 +90,7 @@ namespace PredmetniZadatak3.Controllers
 				sw.PointX = lon;
 				sw.PointY = lat;
 
+				sw.TypeEntity = TypeEntity.Switch;
 				powerEntities.Add(sw);
 			}
         }		
@@ -96,8 +99,8 @@ namespace PredmetniZadatak3.Controllers
         {
 			foreach (PowerEntity entity in powerEntities)
             {
-				entity.PointY = ConvertToMap(entity.PointY, MIN_LAT, ScaleX);
-				entity.PointX = ConvertToMap(entity.PointX, MIN_LON, ScaleY);
+				entity.PointY = ConvertToMap(entity.PointY, MIN_LAT, ScaleY);
+				entity.PointX = ConvertToMap(entity.PointX, MIN_LON, ScaleX);
             }
 
 			foreach (LineEntity line in lineEntities)
